@@ -3,29 +3,25 @@ using UnityEngine;
 public class Movement: MonoBehaviour
 {
     public float Speed = 1.0f;
+    public Vector3 Impulse;
+
     private Rigidbody RB;
 
-    //public GameObject Blocks;
+    void Awake ()
+    {
+        RB = GetComponent <Rigidbody> ();
+    }
 
-    //void Start ()
-    //{
-    //    RB = GetComponent <Rigidbody> ();
-    //}
+    void Start ()
+    {
+        RB.AddForce (Impulse, ForceMode.Impulse);
+    }
 
     void FixedUpdate ()
     {
         //if (Input.GetKey (KeyCode.UpArrow))
-            transform.position += transform.forward * Speed * Time.deltaTime;
+            transform.position += Speed * Time.deltaTime * transform.forward;
         //else if (Input.GetKey (KeyCode.DownArrow))
         //    transform.position -= transform.forward * Speed * Time.deltaTime;
     }
-
-    //void OnTriggerEnter (Collider other)
-    //{
-    //    if (other.gameObject.CompareTag ("PickUp"))
-    //    {
-    //        other.gameObject.SetActive (false);
-    //        Destroy (Blocks);
-    //    }
-    //}
 }

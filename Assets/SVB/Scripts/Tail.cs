@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +7,8 @@ public class Tail: MonoBehaviour
     public Transform Head;
     public float Diametr;
 
-    private List <Transform> Snake_Sircles = new ();
-    private List <Vector3> positions = new ();
+    private readonly List <Transform> Snake_Sircles = new ();
+    private readonly List <Vector3> positions = new ();
 
     void Start ()
     {
@@ -39,7 +38,7 @@ public class Tail: MonoBehaviour
 
     public void Add_Circles ()
     {
-        Transform circle = Instantiate (Head, positions [positions.Count - 1], Quaternion.identity, transform);
+        Transform circle = Instantiate (Head, positions [/*positions.Count -*/ ^1], Quaternion.identity, transform);
         Snake_Sircles.Add (circle);
         positions.Add (circle.position);
     }
