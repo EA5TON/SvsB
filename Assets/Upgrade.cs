@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Destroy_Blocks: MonoBehaviour
+public class Upgrade: MonoBehaviour
 {
     void OnTriggerEnter ()
     {
         Destroy (gameObject);
     }
- }
+}

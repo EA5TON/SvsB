@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Snake_Movement: MonoBehaviour
 {
-    public float ForwardSpeed = 5;
+    public float Forward_Speed = 5;
     public float Sensitivity = 10;
 
     public int Length = 1;
 
-    public TextMeshPro PointsText;
+    public TextMeshPro Points_Text;
 
     private Camera Main_Camera;
     private Rigidbody Component_Rigidbody;
@@ -27,7 +27,7 @@ public class Snake_Movement: MonoBehaviour
         for (i = 0; i < Length; i++)
             Component_Tail.Add_Circles ();
 
-        PointsText.SetText (Length.ToString ());
+        Points_Text.SetText (Length.ToString ());
     }
 
     private void Update ()
@@ -53,14 +53,14 @@ public class Snake_Movement: MonoBehaviour
         {
             Length++;
             Component_Tail.Add_Circles ();
-            PointsText.SetText (Length.ToString ());
+            Points_Text.SetText (Length.ToString ());
         }
 
         if (Input.GetKeyDown (KeyCode.D))
         {
             Length--;
             Component_Tail.Remove_Circle ();
-            PointsText.SetText (Length.ToString ());
+            Points_Text.SetText (Length.ToString ());
         }
     }
 
