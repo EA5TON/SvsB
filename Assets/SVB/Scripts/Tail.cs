@@ -4,8 +4,9 @@ using UnityEngine;
 public class Tail: MonoBehaviour
 {
     int i;
-    public Transform Head;
-    public float Diametr;
+
+    [SerializeField] private Transform Head;
+    [SerializeField] private float Diametr;
 
     private readonly List <Transform> Snake_Sircles = new ();
     private readonly List <Vector3> positions = new ();
@@ -34,11 +35,17 @@ public class Tail: MonoBehaviour
         {
             Snake_Sircles [i].position = Vector3.Lerp (positions [i + 1], positions [i], distance / Diametr);
         }
+
+        if (Input.GetKeyDown (KeyCode.A))
+            Add_Circles ();
+
+        if (Input.GetKeyDown (KeyCode.D))
+            Remove_Circle ();
     }
 
     public void Add_Circles ()
     {
-        Transform circle = Instantiate (Head, positions [/*positions.Count -*/ ^1], Quaternion.identity, transform);
+        Transform circle = Instantiate (Head, positions [positions.Count - 1], Quaternion.identity, transform);
         Snake_Sircles.Add (circle);
         positions.Add (circle.position);
     }

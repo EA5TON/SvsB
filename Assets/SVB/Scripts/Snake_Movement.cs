@@ -68,7 +68,7 @@ public class Snake_Movement: MonoBehaviour
     {
         if (Mathf.Abs (Sideways_Speed) > 4)
             Sideways_Speed = 4 * Mathf.Sign (Sideways_Speed);
-        Component_Rigidbody.velocity = new Vector3 (Sideways_Speed * 5, ForwardSpeed);
+        Component_Rigidbody.velocity = new Vector3 (Sideways_Speed * 5, Forward_Speed);
 
         Sideways_Speed = 0;
     }
