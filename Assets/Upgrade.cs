@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class Upgrade: MonoBehaviour
+public class Upgrade : MonoBehaviour
 {
+
     void OnTriggerEnter ()
     {
-        Destroy (gameObject);
+        Input.GetKeyDown (KeyCode.A);
+        Debug.Log ("A");
     }
 }
