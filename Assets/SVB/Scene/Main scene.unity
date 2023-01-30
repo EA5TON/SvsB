@@ -7529,7 +7529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Component_Forward_Speed: {fileID: 1650283759}
-  Component_Go: {fileID: 0}
+  Component_Go: {fileID: 933314630}
 --- !u!114 &2067927038
 MonoBehaviour:
   m_ObjectHideFlags: 0
