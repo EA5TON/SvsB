@@ -2,73 +2,86 @@ using UnityEngine;
 
 public class Controls: MonoBehaviour
 {
-    public float Speed;
+    [SerializeField] internal float Forward_Speed = 0;
 
-    public bool Arrow;
-    public bool Mouse;
+    [SerializeField] float Speed;
+    [SerializeField] float Multiplier = 6;
+
+    [SerializeField] internal bool Arrow;
+    [SerializeField] internal bool Mouse;
+    [SerializeField] internal bool Die;
 
     //------------------------------------------------------------------------------------------------------------------------
     void FixedUpdate ()
     {
         Change_Control ();
+        transform.position += Forward_Speed * Time.deltaTime * transform.forward;
     }
     //------------------------------------------------------------------------------------------------------------------------
-    void Change_Control ()
+    public void Change_Control ()
     {
-        if (Arrow == true && Mouse == false)
+        if (Arrow)
             Arrow_Control ();
 
-        else if (Mouse == true && Arrow == false)
+        if (Mouse)
             Mouse_Control ();
 
-        else if (Arrow == true && Mouse == true)
-        {
-            Arrow_Control ();
-            Mouse_Control ();
-        }
+        if (Die)
+            Die_Control ();
     }
     //------------------------------------------------------------------------------------------------------------------------
-    void Arrow_Control ()
+    public void Arrow_Control ()
     {
-        Vector3 arrow;
         float speed = Speed * Time.deltaTime;
 
-        if (Input.GetKey (KeyCode.LeftArrow))
-        {
-            arrow = new (-speed, 0, 0);
-            transform.Translate (arrow * speed);
-        }
+        var inputX = Input.GetAxis ("Horizontal");
+        var inputZ = Input.GetAxis ("Vertical");
 
-        else if (Input.GetKey (KeyCode.RightArrow))
-        {
-            arrow = new (speed, 0, 0);
-            transform.Translate (arrow * speed);
-        }
+        Vector3 arrow = speed * new Vector3 (inputX, 0, inputZ);
+        transform.Translate (arrow);
 
-        else if (Input.GetKey (KeyCode.UpArrow))
-        {
-            arrow = new (0, 0, speed);
-            transform.Translate (arrow * speed);
-        }
+        //if (Input.GetKey (KeyCode.LeftArrow))
+        //{
+        //    arrow = new (-speed, 0, 0);
+        //    transform.Translate (arrow * speed);
+        //}
 
-        else if (Input.GetKey (KeyCode.DownArrow))
-        {
-            arrow = new (0, 0, -speed);
-            transform.Translate (arrow * speed);
-        }
+        //else if (Input.GetKey (KeyCode.RightArrow))
+        //{
+        //    arrow = new (speed, 0, 0);
+        //    transform.Translate (arrow * speed);
+        //}
+
+        //else if (Input.GetKey (KeyCode.UpArrow))
+        //{
+        //    arrow = new (0, 0, speed);
+        //    transform.Translate (arrow * speed);
+        //}
+
+        //else if (Input.GetKey (KeyCode.DownArrow))
+        //{
+        //    arrow = new (0, 0, -speed);
+        //    transform.Translate (arrow * speed);
+        //}
     }
     //------------------------------------------------------------------------------------------------------------------------
-    void Mouse_Control ()
+    public void Mouse_Control ()
     {
         Vector3 mouse;
-        float multiplier = 2;
-        float mouse_speed = (Speed * multiplier) * Time.deltaTime;
+        float mouse_speed = (Speed * Multiplier) * Time.deltaTime;
 
         if (Input.GetMouseButton (0))
         {
             mouse = new (Input.GetAxis ("Mouse X") * mouse_speed, 0, 0);
-            transform.Translate (((Speed * multiplier) * mouse) * Time.deltaTime);
+            transform.Translate (((Speed * Multiplier) * mouse) * Time.deltaTime);
         }
+    }
+    //------------------------------------------------------------------------------------------------------------------------
+    public void Die_Control ()
+    {
+        Forward_Speed = 0;
+        Arrow = false;
+        Mouse = false;
     }
     //------------------------------------------------------------------------------------------------------------------------
 }

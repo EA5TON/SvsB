@@ -5,19 +5,18 @@ public class Tail: MonoBehaviour
 {
     int i;
 
-    [SerializeField] private Transform Head;
-    [SerializeField] private float Diametr;
+    [SerializeField] Transform Head;
+    [SerializeField] float Diametr;
 
-    private readonly List <Transform> Snake_Sircles = new ();
-    private readonly List <Vector3> positions = new ();
+    readonly List <Transform> Snake_Sircles = new ();
+    readonly List <Vector3> positions = new ();
 
+    //------------------------------------------------------------------------------------------------------------------------
     void Start ()
     {
         positions.Add (Head.position);
-        Add_Circles ();
-        Add_Circles ();
     }
-
+    //------------------------------------------------------------------------------------------------------------------------
     void Update ()
     {
         float distance = ((Vector3) Head.position - positions [0]).magnitude;
@@ -35,25 +34,20 @@ public class Tail: MonoBehaviour
         {
             Snake_Sircles [i].position = Vector3.Lerp (positions [i + 1], positions [i], distance / Diametr);
         }
-
-        if (Input.GetKeyDown (KeyCode.A))
-            Add_Circles ();
-
-        if (Input.GetKeyDown (KeyCode.D))
-            Remove_Circle ();
     }
-
+    //------------------------------------------------------------------------------------------------------------------------
     public void Add_Circles ()
     {
         Transform circle = Instantiate (Head, positions [positions.Count - 1], Quaternion.identity, transform);
         Snake_Sircles.Add (circle);
         positions.Add (circle.position);
     }
-
+    //------------------------------------------------------------------------------------------------------------------------
     public void Remove_Circle ()
     {
-        Destroy(Snake_Sircles [0].gameObject);
+        Destroy (Snake_Sircles [0].gameObject);
         Snake_Sircles.RemoveAt (0);
         positions.RemoveAt (1);
     }
+    //------------------------------------------------------------------------------------------------------------------------
 }

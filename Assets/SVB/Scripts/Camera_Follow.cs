@@ -2,16 +2,20 @@ using UnityEngine;
 
 public class Camera_Follow: MonoBehaviour
 {
-    public GameObject Ball;
-    private Vector3 Moving;
+    [SerializeField] GameObject Ball;
+    float Offset;
 
-    void Start ()
+    //------------------------------------------------------------------------------------------------------------------------
+    public void Awake ()
     {
-        Moving = transform.position - Ball.transform.position;
+        Offset = transform.position.z - Ball.transform.position.z;
     }
-
-    void Update ()
+    //------------------------------------------------------------------------------------------------------------------------
+    public void Update ()
     {
-        transform.position = Ball.transform.position + Moving;
+        Vector3 cam_pos = transform.position;
+        cam_pos.z = Ball.transform.position.z + Offset;
+        transform.position = cam_pos;
     }
+    //------------------------------------------------------------------------------------------------------------------------
 }
