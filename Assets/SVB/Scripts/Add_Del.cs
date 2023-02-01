@@ -6,7 +6,7 @@ public class Add_Del: MonoBehaviour
 {
     [SerializeField] int Length = 1;
     [SerializeField] Tail Component_Tail;
-    [SerializeField] TextMeshPro Text;
+    [SerializeField] TMP_Text Text;
 
     [SerializeField] GameObject Win;
     [SerializeField] GameObject Lose;
@@ -31,7 +31,6 @@ public class Add_Del: MonoBehaviour
     //------------------------------------------------------------------------------------------------------------------------
     void OnTriggerEnter (Collider other)
     {
-
         int i;
 
         Random rand = new ();
