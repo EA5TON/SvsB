@@ -4,9 +4,13 @@ using Random = System.Random;
 
 public class Add_Del: MonoBehaviour
 {
-    [SerializeField] int Length = 1;
+    int i;
+    readonly Random rand = new ();
+
+    [SerializeField] internal int Length_Snake = 1;
+    [SerializeField] Del Component_Del;
     [SerializeField] Tail Component_Tail;
-    [SerializeField] TMP_Text Text;
+    [SerializeField] internal TMP_Text Text_Snake;
 
     [SerializeField] GameObject Win;
     [SerializeField] GameObject Lose;
@@ -16,42 +20,39 @@ public class Add_Del: MonoBehaviour
     //------------------------------------------------------------------------------------------------------------------------
     void Start ()
     {
-        Text.SetText (Length.ToString ());
+        Text_Snake.SetText (Length_Snake.ToString ());
     }
     //------------------------------------------------------------------------------------------------------------------------
     void FixedUpdate ()
     {
-        if (Length <= 0)
+        if (Length_Snake <= 0)
         {
             Component_Controls.Die = true;
-            Text.SetText (Length.ToString ());
+            Text_Snake.SetText (Length_Snake.ToString ());
             Lose.SetActive (true);
         }
     }
     //------------------------------------------------------------------------------------------------------------------------
     void OnTriggerEnter (Collider other)
     {
-        int i;
-
-        Random rand = new ();
-
         if (other.TryGetComponent (out Del del))
         {
-            for (i = 0; i < GetRand (rand).Next (1, 11); i++)
-            {
-                Length--;
+            //for (i = 0; i < GetRand (rand).Next (1, 11); i++)
+            //{
+                Length_Snake = Length_Snake - Component_Del.Length_Blocks;
+                Length_Snake--;
                 Component_Tail.Remove_Circle ();
-                Text.SetText (Length.ToString ());
-            }
+                Text_Snake.SetText (Length_Snake.ToString ());
+            //}
         }
 
         if (other.TryGetComponent (out Add add))
         {
             for (i = 0; i < GetRand (rand).Next (1, 11); i++)
             {
-                Length++;
+                Length_Snake++;
                 Component_Tail.Add_Circles ();
-                Text.SetText (Length.ToString ());
+                Text_Snake.SetText (Length_Snake.ToString ());
             }
         }
     }

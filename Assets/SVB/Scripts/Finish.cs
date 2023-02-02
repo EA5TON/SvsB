@@ -21,5 +21,4 @@ public class Finish: MonoBehaviour
     {
         SceneManager.LoadScene (0);
     }
-
 }
