@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class Controls: MonoBehaviour
 {
-    [SerializeField] internal float Forward_Speed = 0;
-
+    [SerializeField] internal float Forward_Speed = 1;
     [SerializeField] float Speed;
     [SerializeField] float Multiplier = 6;
-
-    [SerializeField] internal bool Arrow;
-    [SerializeField] internal bool Mouse;
+    [Space]
+    [SerializeField] bool Arrow;
+    [SerializeField] bool Mouse;
     [SerializeField] internal bool Die;
 
     //------------------------------------------------------------------------------------------------------------------------

@@ -7,7 +7,7 @@ public class Del: MonoBehaviour
     int i;
     readonly Random rand = new ();
 
-    [SerializeField] internal int Length_Blocks = 1;
+    [SerializeField] internal int Length_Blocks;
     [SerializeField] TMP_Text Text_Block;
 
     //------------------------------------------------------------------------------------------------------------------------
@@ -29,5 +29,5 @@ public class Del: MonoBehaviour
     {
         return rand;
     }
-    //------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------  
 }
