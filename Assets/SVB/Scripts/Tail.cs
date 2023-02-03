@@ -5,11 +5,11 @@ public class Tail: MonoBehaviour
 {
     int i;
 
-    [SerializeField] Transform Head;
-    [SerializeField] float Diametr;
-
     readonly List <Transform> Snake_Sircles = new ();
     readonly List <Vector3> positions = new ();
+
+    [SerializeField] Transform Head;
+    [SerializeField] float Diametr;
 
     //------------------------------------------------------------------------------------------------------------------------
     void Start ()

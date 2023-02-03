@@ -4526,3 +4526,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Length_Blocks: 1
   Text_Block: {fileID: 5979253479547024453}
+  Component_Add_Del: {fileID: 0}
+  Component_Tail: {fileID: 0}
+  Component_Text_Snake: {fileID: 0}
