@@ -6,13 +6,18 @@ public class Del: MonoBehaviour
 {
     int i;
     readonly Random rand = new ();
+    AudioSource Audio_Source;
 
-    [SerializeField] internal int Length_Blocks;
+    [SerializeField] GameObject Snake;
+    [SerializeField] AudioClip Audio_Clip;
+    [SerializeField] internal int Length_Blocks = 1;
     [SerializeField] TMP_Text Text_Block;
 
     //------------------------------------------------------------------------------------------------------------------------
     void Start ()
     {
+        Audio_Source = Snake.GetComponent <AudioSource> ();
+
         for (i = 0; i < GetRand (rand).Next (1, 11); i++)
         {
             Length_Blocks++;
@@ -20,8 +25,9 @@ public class Del: MonoBehaviour
         }
     }
     //------------------------------------------------------------------------------------------------------------------------
-    void OnTriggerEnter (Collider other)
+    void OnTriggerEnter ()
     {
+        Audio_Source.PlayOneShot (Audio_Clip);
         Destroy (gameObject);
     }
     //------------------------------------------------------------------------------------------------------------------------
@@ -29,5 +35,5 @@ public class Del: MonoBehaviour
     {
         return rand;
     }
-    //------------------------------------------------------------------------------------------------------------------------  
+    //------------------------------------------------------------------------------------------------------------------------
 }
