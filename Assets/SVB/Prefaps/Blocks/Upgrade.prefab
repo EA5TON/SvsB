@@ -128,10 +128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebeed80fa2491be4e8719b6dfd6b47b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Snake: {fileID: 0}
-  Audio_Clip: {fileID: 8300000, guid: b1adf572651ce2148a3097f1b7440117, type: 3}
   Length_Sphere: 1
   Text_Sphere: {fileID: 418456158925637320}
+  Destroy_Sphere: {fileID: 8469052498826711505, guid: 8b5c44b26c7de02418fdfaaee73c9585, type: 3}
+  Snake: {fileID: 0}
+  Audio_Clip: {fileID: 8300000, guid: b1adf572651ce2148a3097f1b7440117, type: 3}
 --- !u!1 &418456158925637322
 GameObject:
   m_ObjectHideFlags: 0

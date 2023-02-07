@@ -8,10 +8,14 @@ public class Del: MonoBehaviour
     readonly Random rand = new ();
     AudioSource Audio_Source;
 
-    [SerializeField] GameObject Snake;
-    [SerializeField] AudioClip Audio_Clip;
     [SerializeField] internal int Length_Blocks = 1;
+    [Space]
     [SerializeField] TMP_Text Text_Block;
+    [Space]
+    [SerializeField] GameObject Destroy_Blocks;
+    [SerializeField] GameObject Snake;
+    [Space]
+    [SerializeField] AudioClip Audio_Clip;
 
     //------------------------------------------------------------------------------------------------------------------------
     void Start ()
@@ -28,6 +32,8 @@ public class Del: MonoBehaviour
     void OnTriggerEnter ()
     {
         Audio_Source.PlayOneShot (Audio_Clip);
+        GameObject destroy_object = (GameObject) Instantiate (Destroy_Blocks);
+        destroy_object.transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
         Destroy (gameObject);
     }
     //------------------------------------------------------------------------------------------------------------------------

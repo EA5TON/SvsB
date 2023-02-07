@@ -5,6 +5,7 @@ public class Finish: MonoBehaviour
 {
     [SerializeField] GameObject Win;
     [SerializeField] Controls Component_Controls;
+
     //------------------------------------------------------------------------------------------------------------------------
     void OnTriggerEnter ()
     {
