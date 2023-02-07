@@ -8,10 +8,14 @@ public class Add: MonoBehaviour
     readonly Random rand = new ();
     AudioSource Audio_Source;
 
-    [SerializeField] GameObject Snake;
-    [SerializeField] AudioClip Audio_Clip;
     [SerializeField] internal int Length_Sphere = 1;
+    [Space]
     [SerializeField] TMP_Text Text_Sphere;
+    [Space]
+    [SerializeField] GameObject Destroy_Sphere;
+    [SerializeField] GameObject Snake;
+    [Space]
+    [SerializeField] AudioClip Audio_Clip;
 
     //------------------------------------------------------------------------------------------------------------------------
     void Start ()
@@ -28,6 +32,8 @@ public class Add: MonoBehaviour
     void OnTriggerEnter ()
     {
         Audio_Source.PlayOneShot (Audio_Clip);
+        GameObject destroy_object = (GameObject) Instantiate (Destroy_Sphere);
+        destroy_object.transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
         Destroy (gameObject);
     }
     //------------------------------------------------------------------------------------------------------------------------  
