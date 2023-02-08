@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class Finish: MonoBehaviour
 {
     [SerializeField] GameObject Win;
+    [SerializeField] GameObject Next;
     [SerializeField] Controls Component_Controls;
 
     //------------------------------------------------------------------------------------------------------------------------
@@ -15,6 +16,7 @@ public class Finish: MonoBehaviour
     //------------------------------------------------------------------------------------------------------------------------
     public void Button_Next_Level ()
     {
+        Next.SetActive (true);
         Win.SetActive (false);
     }
     //------------------------------------------------------------------------------------------------------------------------
