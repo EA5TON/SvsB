@@ -4,7 +4,6 @@ using UnityEngine;
 public class Tail: MonoBehaviour
 {
     int i;
-
     readonly List <Transform> Snake_Sircles = new ();
     readonly List <Vector3> positions = new ();
 

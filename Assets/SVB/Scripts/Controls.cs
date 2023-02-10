@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Controls: MonoBehaviour
 {
-    [SerializeField] internal float Forward_Speed = 1;
+    [SerializeField] float Forward_Speed = 1;
     [SerializeField] float Speed;
     [SerializeField] float Multiplier = 6;
     [Space]
@@ -34,34 +34,9 @@ public class Controls: MonoBehaviour
         float speed = Speed * Time.deltaTime;
 
         var inputX = Input.GetAxis ("Horizontal");
-        var inputZ = Input.GetAxis ("Vertical");
 
-        Vector3 arrow = speed * new Vector3 (inputX, 0, inputZ);
+        Vector3 arrow = speed * new Vector3 (inputX, 0, 0);
         transform.Translate (arrow);
-
-        //if (Input.GetKey (KeyCode.LeftArrow))
-        //{
-        //    arrow = new (-speed, 0, 0);
-        //    transform.Translate (arrow * speed);
-        //}
-
-        //else if (Input.GetKey (KeyCode.RightArrow))
-        //{
-        //    arrow = new (speed, 0, 0);
-        //    transform.Translate (arrow * speed);
-        //}
-
-        //else if (Input.GetKey (KeyCode.UpArrow))
-        //{
-        //    arrow = new (0, 0, speed);
-        //    transform.Translate (arrow * speed);
-        //}
-
-        //else if (Input.GetKey (KeyCode.DownArrow))
-        //{
-        //    arrow = new (0, 0, -speed);
-        //    transform.Translate (arrow * speed);
-        //}
     }
     //------------------------------------------------------------------------------------------------------------------------
     public void Mouse_Control ()

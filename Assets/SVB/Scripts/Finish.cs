@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class Finish: MonoBehaviour
 {
+    [SerializeField] Controls Component_Controls;
     [SerializeField] GameObject Win;
     [SerializeField] GameObject Next;
-    [SerializeField] Controls Component_Controls;
 
     //------------------------------------------------------------------------------------------------------------------------
     void OnTriggerEnter ()
